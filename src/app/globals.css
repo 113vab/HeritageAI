@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #030712;
+  --color-foreground: #f9fafb;
+  
+  --color-brand-gold-light: #f59e0b;
+  --color-brand-gold: #d97706;
+  --color-brand-gold-dark: #b45309;
+  
+  --color-brand-teal-light: #2dd4bf;
+  --color-brand-teal: #0d9488;
+  --color-brand-teal-dark: #0f766e;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --background: #030712;
+  --foreground: #f9fafb;
+  color-scheme: dark;
+}
+
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+/* Custom styles for animations and details */
+.glass-panel {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.glass-panel-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.4) 0%, transparent 40%, transparent 60%, rgba(45, 212, 191, 0.2) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.glass-panel-hover:hover::after {
+  opacity: 1;
+}
+
+.glass-panel-hover:hover {
+  background: rgba(17, 24, 39, 0.9);
+  border-color: transparent;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px 4px rgba(217, 119, 6, 0.08);
+  transform: translateY(-6px);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(135deg, #99f6e4 0%, #0d9488 50%, #0f766e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-mixed {
+  background: linear-gradient(135deg, #fef08a 0%, #f59e0b 35%, #2dd4bf 70%, #0d9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-radial {
+  background: radial-gradient(circle at 50% 50%, var(--tw-gradient-stops));
+}
+
+/* Premium Typography Mappings */
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
